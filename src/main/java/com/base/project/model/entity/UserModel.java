@@ -3,10 +3,10 @@ package com.base.project.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "tb_users")
@@ -20,11 +20,14 @@ public class UserModel {
     private String email;
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER) // força que sempre que trazer o userModel, trará o role também;
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id") // referencia a fk da tabela da associação
+            inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<RoleModel> roles = new HashSet<>();
+    @OneToMany(mappedBy = "user")
+    private List<NotificationModel> notifications = new ArrayList<>();
+
 }
