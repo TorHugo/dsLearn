@@ -3,16 +3,13 @@ package com.base.project.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.io.Serializable;
-
 @Entity
-@Table(name = "testing")
+@Table(name = "tb_roles")
 @Data
-public class TestingModel implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class RoleModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String authority;
 }
