@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_offer")
@@ -20,4 +22,7 @@ public class OfferModel {
     @ManyToOne
     @JoinColumn(name = "course_id")
     private CourseModel course;
+
+    @OneToMany(mappedBy = "offer")
+    private List<ResourceModel> resources = new ArrayList<>();
 }
