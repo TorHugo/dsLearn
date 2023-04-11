@@ -25,3 +25,6 @@ INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) 
 INSERT INTO tb_section (title, description, img_Uri, position, resource_id, pre_requisite_id) VALUES ('Capítulo 01', 'Testing', 'image_test', 1, 1, null);
 INSERT INTO tb_section (title, description, img_Uri, position, resource_id, pre_requisite_id) VALUES ('Capítulo 02', 'Testing', 'image_test', 1, 1, 1);
 INSERT INTO tb_section (title, description, img_Uri, position, resource_id, pre_requisite_id) VALUES ('Capítulo 03', 'Testing', 'image_test', 1, 1, 2);
+
+INSERT INTO tb_enrollment (user_id, offer_id, enroll_Moment, refund_Moment, available, only_Update) VALUES (1, 1, TIMESTAMP WITH TIME ZONE '2023-04-15T12:00:00Z', null, true, false);
+INSERT INTO tb_enrollment (user_id, offer_id, enroll_Moment, refund_Moment, available, only_Update) VALUES (2, 1, TIMESTAMP WITH TIME ZONE '2023-04-20T12:00:00Z', null, true, false);
