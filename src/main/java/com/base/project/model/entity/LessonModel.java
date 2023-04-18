@@ -32,4 +32,7 @@ public abstract class LessonModel {
             }
     )
     private List<EnrollmentModel> enrollmentsDone = new ArrayList<>();
+
+    @OneToMany(mappedBy = "lesson")
+    private List<DeliverModel> deliveries = new ArrayList<>();
 }

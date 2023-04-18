@@ -23,6 +23,9 @@ public class EnrollmentModel {
     @ManyToMany(mappedBy = "enrollmentsDone")
     private List<LessonModel> lessonsDone = new ArrayList<>();
 
+    @OneToMany(mappedBy = "enrollment")
+    private List<DeliverModel> deliveries = new ArrayList<>();
+
     public EnrollmentModel() {
     }
 

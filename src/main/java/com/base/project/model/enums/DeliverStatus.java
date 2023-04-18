@@ -5,11 +5,11 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum ResourceType {
-    LESSON_ONLY(1L),
-    LESSON_TASK(2L),
-    FORUM(3L),
-    EXTERNAL_LINK(4L);
+public enum DeliverStatus {
+
+    PENDING(1L),
+    ACCEPTED(2L),
+    REJECTED(3L);
 
     private final Long id;
 }
