@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_enrollment")
@@ -17,6 +19,9 @@ public class EnrollmentModel {
     private LocalDateTime refundMoment;
     private Boolean available;
     private Boolean onlyUpdate;
+
+    @ManyToMany(mappedBy = "enrollmentsDone")
+    private List<LessonModel> lessonsDone = new ArrayList<>();
 
     public EnrollmentModel() {
     }

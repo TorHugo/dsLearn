@@ -28,3 +28,17 @@ INSERT INTO tb_section (title, description, img_Uri, position, resource_id, pre_
 
 INSERT INTO tb_enrollment (user_id, offer_id, enroll_Moment, refund_Moment, available, only_Update) VALUES (1, 1, TIMESTAMP WITH TIME ZONE '2023-04-15T12:00:00Z', null, true, false);
 INSERT INTO tb_enrollment (user_id, offer_id, enroll_Moment, refund_Moment, available, only_Update) VALUES (2, 1, TIMESTAMP WITH TIME ZONE '2023-04-20T12:00:00Z', null, true, false);
+
+INSERT INTO tb_lesson (title, position, section_id) VALUES ('Aula 01', 1, 1);
+INSERT INTO tb_content(id, text_content, video_uri) VALUES (1, 'testing...', 'testing...');
+
+INSERT INTO tb_lesson (title, position, section_id) VALUES ('Aula 02', 1, 2);
+INSERT INTO tb_content(id, text_content, video_uri) VALUES (2, 'testing...', 'testing...');
+
+INSERT INTO tb_lesson (title, position, section_id) VALUES ('Aula 03', 1, 3);
+INSERT INTO tb_content(id, text_content, video_uri) VALUES (3, 'testing...', 'testing...');
+
+INSERT INTO tb_lesson (title, position, section_id) VALUES ('Tarefa Cap.01', 1, 1);
+INSERT INTO tb_task(id, description, question_count, approval_count, weight, due_date) VALUES (4, 'testing...', 5, 3, 1.0, TIMESTAMP WITH TIME ZONE '2023-04-25T12:00:00Z');
+
+INSERT INTO tb_lessons_done(lesson_id, user_id, offer_id) VALUES (4, 1, 1)
