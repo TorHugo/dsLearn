@@ -1,5 +1,7 @@
 package com.base.project.service.impl;
 
+import com.base.project.exception.impl.ResourceNotFoundException;
+import com.base.project.model.dto.UserDTO;
 import com.base.project.model.entity.UserModel;
 import com.base.project.repository.UserRepository;
 import com.base.project.service.UserService;
@@ -27,5 +29,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             throw new UsernameNotFoundException("Email not found.");
 
         return user;
+    }
+
+    @Override
+    public UserDTO findById(Long idUser) {
+        final UserModel userModel = repository.findById(idUser)
+                .orElseThrow(() -> new ResourceNotFoundException("Entity not found!"));
+        return new UserDTO(userModel);
     }
 }
