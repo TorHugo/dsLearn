@@ -2,9 +2,7 @@ package com.base.project.model.pKey;
 
 import com.base.project.model.entity.OfferModel;
 import com.base.project.model.entity.UserModel;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;

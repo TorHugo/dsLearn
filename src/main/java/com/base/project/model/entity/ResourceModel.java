@@ -1,7 +1,7 @@
 package com.base.project.model.entity;
 
 import com.base.project.model.enums.ResourceType;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package com.base.project.model.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 @Entity
