@@ -63,4 +63,13 @@ public class UserModel implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public Boolean hasHole(String roleName){
+        for (RoleModel role : roles){
+            if (Objects.equals(role.getAuthority(), roleName))
+                return Boolean.TRUE;
+        }
+
+        return Boolean.FALSE;
+    }
 }

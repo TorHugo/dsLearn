@@ -1,8 +1,9 @@
 package com.base.project.exception;
 
 import com.base.project.exception.impl.DataBaseException;
+import com.base.project.exception.impl.ForbiddenException;
 import com.base.project.exception.impl.ResourceNotFoundException;
-import org.springframework.http.HttpStatus;
+import com.base.project.exception.impl.UnauthorizedException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -12,13 +13,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
 
+import static com.base.project.util.ResponseUtils.*;
+
 @ControllerAdvice
 public class ResourceExceptionHandler {
-
-	static private HttpStatus notFound = HttpStatus.NOT_FOUND;
-	static private HttpStatus badRequest = HttpStatus.BAD_REQUEST;
-	static private HttpStatus unProcessable = HttpStatus.UNPROCESSABLE_ENTITY;
-
 
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<StandardError> entityNotFound(ResourceNotFoundException exception,
@@ -53,7 +51,7 @@ public class ResourceExceptionHandler {
 		ValidationError err = new ValidationError();
 
 		err.setTimestamp(Instant.now());
-		err.setStatus(unProcessable.value());
+		err.setStatus(unprocessable_entity.value());
 		err.setError("Validation exception.");
 		err.setMessage(exception.getMessage());
 		err.setPath(request.getRequestURI());
@@ -62,6 +60,24 @@ public class ResourceExceptionHandler {
 			err.addError(error.getField(), error.getDefaultMessage());
 		}
 
-		return ResponseEntity.status(unProcessable).body(err);
+		return ResponseEntity.status(unprocessable_entity).body(err);
+	}
+
+	@ExceptionHandler(ForbiddenException.class)
+	public ResponseEntity<OAuthCustomError> forbidden(ForbiddenException exception,
+													  HttpServletRequest request){
+		OAuthCustomError err = new OAuthCustomError();
+		err.setError("Forbidden!");
+		err.setErrorDescription(exception.getMessage());
+		return ResponseEntity.status(forbidden).body(err);
+	}
+
+	@ExceptionHandler(UnauthorizedException.class)
+	public ResponseEntity<OAuthCustomError> unauthorized(UnauthorizedException exception,
+													  HttpServletRequest request){
+		OAuthCustomError err = new OAuthCustomError();
+		err.setError("Unauthorized!");
+		err.setErrorDescription(exception.getMessage());
+		return ResponseEntity.status(unauthorized).body(err);
 	}
 }
