@@ -41,4 +41,6 @@ INSERT INTO tb_content(id, text_content, video_uri) VALUES (3, 'testing...', 'te
 INSERT INTO tb_lesson (title, position, section_id) VALUES ('Tarefa Cap.01', 1, 1);
 INSERT INTO tb_task(id, description, question_count, approval_count, weight, due_date) VALUES (4, 'testing...', 5, 3, 1.0, TIMESTAMP WITH TIME ZONE '2023-04-25T12:00:00Z');
 
-INSERT INTO tb_lessons_done(lesson_id, user_id, offer_id) VALUES (4, 1, 1)
+INSERT INTO tb_lessons_done(lesson_id, user_id, offer_id) VALUES (4, 1, 1);
+
+INSERT INTO tb_deliver (uri, moment, status, feedback, correct_count, lesson_id, user_id, offer_id) VALUES ('Testing', TIMESTAMP WITH TIME ZONE '2023-04-25T12:00:00Z', 0, null, null, 4, 1, 1);
